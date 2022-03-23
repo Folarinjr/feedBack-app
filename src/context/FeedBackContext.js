@@ -8,13 +8,14 @@ export const FeedBackProvider = ({children}) => {
 
     useEffect(()=>{
         fetchFeedBack();
+        //eslint-disable-next-line
     },[])
 
     //Fetch Feedback data from the back end json server
-    //?_sort=id&_order=desc
-    const fetchFeedBack = async () =>{
-        const res = await fetch(`/feedBack`);
-        const data = await res.json();
+    //
+    const fetchFeedBack = async () => {
+        const res = await fetch(`http://localhost:5000/feedBack?_sort=id&_order=desc`)
+        const data = await res.json()
 
         setFeedBack(data);
         setIsLoading(false);
@@ -31,14 +32,14 @@ export const FeedBackProvider = ({children}) => {
     //Delete feedback
   const deleteFeedBack = async (id) =>{
     if(window.confirm('Are you sure you want to delete?')){
-        await fetch(`/feedBack/${id}`, {method: 'DELETE'})
+        await fetch(`http://localhost:5000/feedBack/${id}`, {method: 'DELETE'})
       setFeedBack(feedBack.filter((item)=> item.id !== id ))
     } 
   }
 
    //Add feedback && convert the function to submit to the backend
    const addFeedBack = async (newFeedBack) => {
-       const res = await fetch(`/feedBack`, {
+       const res = await fetch(`http://localhost:5000/feedBack`, {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json'
@@ -66,7 +67,7 @@ export const FeedBackProvider = ({children}) => {
 
     //Update Feedback function
     const updateFeedBack = async(id, updItem) =>{
-        const res = await fetch(`/feedBack/${id}`,{
+        const res = await fetch(`http://localhost:5000/feedBack/${id}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
