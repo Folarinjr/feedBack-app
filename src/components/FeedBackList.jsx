@@ -4,14 +4,38 @@ import FeedBackContext from '../context/FeedBackContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import FeedbackItem from './FeedbackItem'
 
-const FeedBackList = () => {
-  const {feedBack} = useContext(FeedBackContext)
+import Loading from './shared/Loading'
 
-    if (!feedBack){
+const FeedBackList = () => {
+  const {feedBack, isLoading} = useContext(FeedBackContext)
+
+    if (!isLoading && !feedBack){
         return('NO FEEDBACK YET...')
     };
 
-
+    return isLoading ? (<Loading/>) 
+        :  (
+              <div className='feedback-list'>
+                  <AnimatePresence>
+                    {feedBack.map((item)=>(
+                      <motion.div 
+                        key={item.id}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                      >
+                      <FeedbackItem  
+                        key={item.id} 
+                        item={item} 
+                      />
+                      </motion.div>
+                      )
+                      )}
+                  </AnimatePresence>
+                </div>
+        )
+     
+    /** 
     return (
       <div className='feedback-list'>
         <AnimatePresence>
@@ -32,6 +56,7 @@ const FeedBackList = () => {
         </AnimatePresence>
       </div>
     )
+    **/
 
     /** This is without the anomation
   return (
