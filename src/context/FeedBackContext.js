@@ -11,8 +11,9 @@ export const FeedBackProvider = ({children}) => {
     },[])
 
     //Fetch Feedback data from the back end json server
+    //?_sort=id&_order=desc
     const fetchFeedBack = async () =>{
-        const res = await fetch(`/feedBack?_sort=id&_order=desc`);
+        const res = await fetch(`/feedBack`);
         const data = await res.json();
 
         setFeedBack(data);
