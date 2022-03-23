@@ -3,25 +3,25 @@
     {
       "id": 1,
       "rating": 10,
-      "text": "This is feedBack item 1 from the backend"
+      "text": "Your service is great"
     },
     {
-      "text": "This is feedBack item 2 from the backend",
+      "text": "Your service is awesome",
       "rating": 10,
       "id": 2
     },
     {
       "id": 3,
       "rating": 8,
-      "text": "This is feedBack item 3 from the backend"
+      "text": "Your service is great1"
     },
     {
       "id": 4,
       "rating": 9,
-      "text": "This is feedBack item 4 from the backend"
+      "text": "Your service is great2"
     },
     {
-      "text": "This is feedBack item 5 from the backend",
+      "text": "Your service is great3",
       "rating": 10,
       "id": 5
     }
